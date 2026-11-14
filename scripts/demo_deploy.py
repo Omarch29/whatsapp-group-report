@@ -10,7 +10,8 @@ Luego, en web/ con WGR_DATA_DIR y WGR_CONTENT_DIR apuntando ahí: `pnpm build` y
 --mode (por defecto full) elige el informe completo o la página única; single exige --no-deploy porque las demos
 públicas son full.
 Con --no-deploy termina ahí y no invoca vercel. Sin él: `vercel link --yes --project whatsapp-group-report-<lang>`
-(solo si web/.vercel no apunta ya a ese proyecto), `vercel pull --yes --environment=production`, `vercel build --prod`
+(solo si web/.vercel no apunta ya a ese proyecto; después `vercel git disconnect --yes`, porque el link conecta el
+repo de GitHub y cada push dispararía un build), `vercel pull --yes --environment=production`, `vercel build --prod`
 y `vercel deploy --prebuilt --prod`.
 Es para quienes mantienen las demos públicas. web/.vercel guarda un solo proyecto linkeado: alternar entre es y en
 vuelve a linkear, y si web/.vercel apuntaba a otro proyecto (tu propio reporte) el script avisa antes de re-linkear;
@@ -86,6 +87,12 @@ def run(argv: list[str], *, root: Path = ROOT, vercel=_exec, pnpm=_exec, synth=s
                   f"         Afterwards `pnpm run deploy` in web/ would deploy to the demo. To point it back at your own\n"
                   f"         project, run `vercel link` in web/ and pick {linked!r}.", file=sys.stderr)
         vercel(["vercel", "link", "--yes", "--project", project], cwd=web, env=env)
+        # `vercel link --yes` also connects the GitHub remote to the project, and every push would then start a
+        # build from git (without the demo's data). The demos are deployed from this machine only.
+        try:
+            vercel(["vercel", "git", "disconnect", "--yes"], cwd=web, env=env)
+        except subprocess.CalledProcessError:
+            pass  # nothing was connected
     # vercel build bakes the env pulled into web/.vercel (NEXT_PUBLIC_*): pulling first keeps it current.
     vercel(["vercel", "pull", "--yes", "--environment=production"], cwd=web, env=env)
     vercel(["vercel", "build", "--prod"], cwd=web, env=env)

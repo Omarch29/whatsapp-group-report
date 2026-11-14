@@ -77,6 +77,7 @@ def test_deploy_links_builds_and_deploys_in_order(tmp_path, linked):
     log = go(tmp_path, "--lang", "en")
     vercel = [argv for name, argv, *_ in log if name == "vercel"]
     assert vercel == [["vercel", "link", "--yes", "--project", "whatsapp-group-report-en"],
+                      ["vercel", "git", "disconnect", "--yes"],
                       ["vercel", "pull", "--yes", "--environment=production"],
                       ["vercel", "build", "--prod"], ["vercel", "deploy", "--prebuilt", "--prod"]]
     order = [argv[:2] for _, argv, *_ in log]

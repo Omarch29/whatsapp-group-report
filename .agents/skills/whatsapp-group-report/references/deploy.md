@@ -28,7 +28,10 @@ All commands run in `web/`.
 
 1. **(developer)** `vercel login` (opens the browser).
 2. **(developer)** `vercel link`: answer the prompts, create a new project and give it a name. Do not run it with
-   `--yes` for them: it would name the project after the folder.
+   `--yes` for them: it would name the project after the folder. If it connects their Git repository to the
+   project (or offers to), the answer is no; when it has already connected it, `vercel git disconnect` undoes it.
+   The report is deployed from the machine, never from git. It also adds a `VERCEL_OIDC_TOKEN` line to
+   `web/.env.local`: leave it, and never remove the developer's own line from that file.
 3. Only with `"gate": true`, **(developer)**:
    `vercel env add NEXT_PUBLIC_GATE_WORD production --no-sensitive`
    and type the word at the prompt. `--no-sensitive` lets `vercel pull` read it back, so the local build of the

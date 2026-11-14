@@ -110,7 +110,8 @@ It generates `chats/synth-<lang>-ios.txt`, `content/demo-<lang>/`, `report.confi
 `data/demo-<lang>/` and `web/data/demo-<lang>/` (all git-ignored, none of them touches your own data), builds `web/`
 with `WGR_DATA_DIR` and `WGR_CONTENT_DIR` pointing there, and runs `pnpm check:en`, which fails if a page or chunk
 carries UI words of the other language. Without `--no-deploy` it then runs `vercel link --yes --project
-whatsapp-group-report-<lang>` (only if `web/.vercel` is not already that project), `vercel pull --yes
+whatsapp-group-report-<lang>` (only if `web/.vercel` is not already that project) followed by `vercel git disconnect
+--yes` (linking connects the GitHub remote, and every push would start a build from git), `vercel pull --yes
 --environment=production`, `vercel build --prod` and `vercel deploy --prebuilt --prod`. Regenerate both with each
 release.
 

@@ -91,6 +91,9 @@ pnpm run deploy
 - In the Vercel dashboard (project > Settings > Deployment Protection), keep Vercel Authentication on **Preview**
   deployments only. Production has to open for your friends; the access word guards it.
 - `--no-sensitive` lets the deploy read the word back to bake it into the build. Without it the deploy fails.
+- If `vercel link` connects your Git repository to the project (or offers to), undo it with `vercel git disconnect`:
+  the report is published from your machine, and a connected repository would make Vercel build on every push,
+  without your data. `vercel link` also adds a `VERCEL_OIDC_TOKEN` line to `web/.env.local`; leave it there.
 - The deploy script is always written `pnpm run deploy`, with `run`: without it pnpm runs a command of its own.
 - After any later change, run `pnpm run deploy` again in `web/`.
 
@@ -271,6 +274,9 @@ pnpm run deploy
 - En el panel de Vercel (proyecto > Settings > Deployment Protection), dejá Vercel Authentication solo en los
   deploys de **Preview**. Producción tiene que quedar abierta para tus amigos; la cuida la palabra de acceso.
 - `--no-sensitive` deja que el deploy vuelva a leer la palabra para meterla en el build. Sin eso, el deploy falla.
+- Si `vercel link` conecta tu repositorio de Git al proyecto (o te lo ofrece), deshacelo con `vercel git disconnect`:
+  el informe se publica desde tu máquina, y con el repositorio conectado Vercel haría un build en cada push, sin
+  tus datos. `vercel link` también agrega una línea `VERCEL_OIDC_TOKEN` a `web/.env.local`; dejala ahí.
 - El script de deploy siempre se escribe `pnpm run deploy`, con `run`: sin eso pnpm corre un comando propio.
 - Después de cualquier cambio, volvé a correr `pnpm run deploy` en `web/`.
 

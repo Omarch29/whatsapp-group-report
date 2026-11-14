@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // What `vercel build` leaves behind after a deploy (a prebuilt copy of the site):
+    ".vercel/**",
   ]),
 ]);
 
