@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>A chat bubble holding a trophy</title>
+  <g transform="rotate(-7 32 32)">
+    <path fill="#25d366" d="M19 7h26a13 13 0 0 1 13 13v15a13 13 0 0 1-13 13h-1l9 12-21-12H19A13 13 0 0 1 6 35V20A13 13 0 0 1 19 7Z"/>
+    <g fill="#0b141a">
+      <path d="M22.5 13.5h19v9.6c0 6-4.2 9.9-9.500 9.900s-9.5-3.900-9.500-9.900Z"/>
+      <rect x="30" y="32" width="4" height="5.500"/>
+      <rect x="24.500" y="36.500" width="15" height="4.200" rx="1.600"/>
+    </g>
+    <g fill="none" stroke="#0b141a" stroke-width="2.800" stroke-linecap="round">
+      <path d="M22.500 17h-4.200c0 5.600 1.900 8.800 5.900 9.800"/>
+      <path d="M41.500 17h4.200c0 5.600-1.900 8.800-5.900 9.800"/>
+    </g>
+    <path fill="#25d366" d="m32 17.300 1.500 3 3.300.500-2.400 2.300.600 3.300-3-1.600-3 1.600.600-3.300-2.400-2.300 3.300-.500Z"/>
+  </g>
+  <path fill="#ff5ca8" d="m54 2 1.900 5.100L61 9l-5.100 1.900L54 16l-1.900-5.100L47 9l5.100-1.900Z"/>
+</svg>

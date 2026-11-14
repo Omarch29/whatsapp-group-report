@@ -1,3 +1,5 @@
+<p align="center"><img src="web/src/app/icon.svg" width="96" alt=""></p>
+
 # whatsapp-group-report
 
 [English](#english) · [Español](#español)
