@@ -35,8 +35,8 @@ const simNode = (id: string) => {
 };
 
 const { people } = fx.global;
-// Fixture weights are tiny; scale them past the 1500 threshold so links render.
-const edges = fx.global.edges.map((e) => ({ ...e, w: e.w * 100 }));
+// Three people and three edges: fewer than the K the derived threshold keeps, so every link renders.
+const edges = fx.global.edges;
 
 // Positions are published from requestAnimationFrame; hold those frames so the
 // simulation never updates React state outside act(). Tests assert attributes only.
@@ -194,16 +194,34 @@ describe("Pairs", () => {
     expect(graph()).toHaveAttribute("data-focus", "tomi");
   });
 
-  it("focus prop keeps a low-traffic person's top links even under the threshold", () => {
+  it("focus prop keeps a low-traffic person's top links even under the derived threshold", () => {
     mockReducedMotion(true);
-    // Raw fixture weights (20..120) are all far below 1500.
-    const { unmount } = render(<Pairs people={people} edges={fx.global.edges} lede="" />);
-    expect(graph().querySelectorAll("line")).toHaveLength(0);
+    // Six people, so K = 9 of 15 edges: the nine strongest of the ten between the other five. Ana's are all weaker.
+    const slugs = ["bruno", "tomi", "carla", "diego", "eva", "ana"];
+    const crowd = slugs.map((slug, i) => ({
+      ...people[0],
+      slug,
+      name: slug[0].toUpperCase() + slug.slice(1),
+      colorIndex: i,
+    }));
+    const strong = slugs.slice(0, 5).flatMap((a, i) => slugs.slice(i + 1, 5).map((b) => ({ a, b, w: 500 - i * 10 })));
+    const anaEdges = [
+      { a: "ana", b: "bruno", w: 40 },
+      { a: "ana", b: "tomi", w: 30 },
+      { a: "ana", b: "carla", w: 20 },
+      { a: "ana", b: "diego", w: 10 },
+      { a: "ana", b: "eva", w: 5 },
+    ];
+    const all = [...strong, ...anaEdges];
+    const { unmount } = render(<Pairs people={crowd} edges={all} lede="" />);
+    // A group graph shows lines, and none of them is Ana's.
+    expect(graph().querySelectorAll("line")).toHaveLength(9);
     unmount();
-    render(<Pairs people={people} edges={fx.global.edges} focus="ana" lede="" />);
-    expect(graph().querySelectorAll("line")).toHaveLength(2);
-    expect(screen.getByTestId("node-bruno")).toHaveStyle({ opacity: "1" });
-    expect(screen.getByTestId("node-tomi")).toHaveStyle({ opacity: "1" });
+    render(<Pairs people={crowd} edges={all} focus="ana" lede="" />);
+    // Her three strongest come back; the fourth and fifth stay out and fade.
+    expect(graph().querySelectorAll("line")).toHaveLength(12);
+    for (const id of ["bruno", "tomi", "carla"]) expect(screen.getByTestId(`node-${id}`)).toHaveStyle({ opacity: "1" });
+    expect(screen.getByTestId("node-diego")).toHaveStyle({ opacity: "0.25" });
   });
 
   it("reduced motion renders nodes with final radius immediately", () => {
