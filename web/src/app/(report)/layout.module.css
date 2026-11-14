@@ -1,0 +1,21 @@
+.shell {
+  min-height: 100svh;
+}
+
+.main {
+  min-width: 0;
+  padding-bottom: 4rem;
+}
+
+/* Sidebar.module.css hides the sidebar below this width and the top bar above it. */
+@media (min-width: 1024px) {
+  .shell {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    align-items: start;
+  }
+
+  .main {
+    grid-column: 2;
+  }
+}

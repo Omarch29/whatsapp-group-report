@@ -1,0 +1,70 @@
+.screen {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1.25rem;
+  background: var(--ink);
+}
+
+.form {
+  width: min(100%, 22rem);
+  display: grid;
+  gap: 0.875rem;
+}
+
+.title {
+  font-size: var(--step-3);
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 0.75rem;
+}
+
+.input {
+  font: inherit;
+  font-size: var(--step-0);
+  color: var(--paper);
+  background: var(--bubble);
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--dim);
+}
+
+.input:focus-visible {
+  border-color: var(--mint);
+}
+
+.button {
+  font: inherit;
+  font-size: var(--step-0);
+  font-weight: 800;
+  font-stretch: 125%;
+  color: var(--ink);
+  background: var(--mint);
+  border: 0;
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  cursor: pointer;
+  transition: transform 120ms ease-out;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.error {
+  min-height: 1.5em;
+  color: var(--ribbon);
+  font-size: var(--step--1);
+}

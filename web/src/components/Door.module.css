@@ -1,0 +1,35 @@
+.frame {
+  position: relative;
+  width: 170px;
+  height: 230px;
+  max-width: 100%;
+  border: 8px solid var(--bubble);
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--panel);
+  perspective: 600px;
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 4.5rem;
+}
+
+.leaf {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #5a3a1e, #8a5a2b);
+  transform-origin: left center;
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--gold);
+}

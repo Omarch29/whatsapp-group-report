@@ -1,0 +1,66 @@
+.root {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 1.1rem;
+  max-width: 40rem;
+  padding-left: 0.5rem;
+}
+
+.item {
+  display: grid;
+  justify-items: start;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.original {
+  transform-origin: left bottom;
+}
+
+.text {
+  font-size: var(--step-0);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.count {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* The echoes: small bubbles stacking under the original, slightly indented. */
+.echoes {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-left: 1.1rem;
+}
+
+.echo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.6rem 0.15rem 0.5rem;
+  border-radius: 0.2rem 0.75rem 0.75rem 0.75rem;
+  background: var(--bubble);
+  color: var(--ct);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.5;
+  transform-origin: left top;
+}
+
+.echo::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--c);
+}

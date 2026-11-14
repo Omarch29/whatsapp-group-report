@@ -1,0 +1,26 @@
+[
+  {
+    "id": "the-barbecue",
+    "title": "The barbecue of the year",
+    "terms": "barbecue|\\bbbq\\b|\\bgrill|charcoal|sausage",
+    "from": "2025-04-23",
+    "to": "2025-04-27",
+    "note": "An April Saturday at Tomi's: the grill, homemade chimichurri and the photo that still goes around."
+  },
+  {
+    "id": "caros-birthday",
+    "title": "Caro's birthday",
+    "terms": "birthday|cake|present|gift",
+    "from": "2025-12-10",
+    "to": "2025-12-14",
+    "note": "The group's longest party: cake, a present from everyone and dancing until 4."
+  },
+  {
+    "id": "the-final",
+    "title": "The World Cup final",
+    "terms": "world cup|the final|penalties|the game",
+    "from": "2026-07-16",
+    "to": "2026-07-20",
+    "note": "Everyone watched the final together, lucky charms included and nobody leaving their seat."
+  }
+]

@@ -1,0 +1,70 @@
+.root {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.screen {
+  max-width: 40rem;
+}
+
+.figure {
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+}
+
+/* Room above and below the bubble for two rows of laughs each. */
+.stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  padding-block: 3.6rem;
+}
+
+.bubble {
+  max-width: min(100%, 26rem);
+  transform-origin: center bottom;
+}
+
+.text {
+  font-size: var(--step-1);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.laugh {
+  position: absolute;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.75rem;
+  background: var(--mine);
+  color: var(--paper);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.laugh[data-up="true"] {
+  top: 0.35rem;
+}
+
+.laugh[data-up="true"][data-outer="true"] {
+  top: 1.85rem;
+}
+
+.laugh[data-up="false"] {
+  bottom: 1.85rem;
+}
+
+.laugh[data-up="false"][data-outer="true"] {
+  bottom: 0.35rem;
+}
+
+.count {
+  color: var(--gold);
+  font-size: var(--step--1);
+  font-weight: 700;
+}

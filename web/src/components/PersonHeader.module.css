@@ -1,0 +1,61 @@
+.header {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+  padding-bottom: 0;
+}
+
+.back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: var(--paper);
+  font-size: var(--step--1);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .back:hover {
+    border-color: var(--paper);
+  }
+}
+
+.back:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  min-width: 0;
+  font-size: var(--step-5);
+}
+
+.dot {
+  flex: none;
+  width: 0.32em;
+  height: 0.32em;
+  border-radius: 50%;
+}
+
+.name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.nick {
+  color: var(--dim);
+  font-size: var(--step-2);
+  font-stretch: 112%;
+  font-weight: 700;
+  line-height: 1.1;
+}

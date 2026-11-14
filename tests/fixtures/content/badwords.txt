@@ -1,0 +1,80 @@
+# Puteadas para el capítulo Lenguaje (scripts/web/language.py). Una por línea, minúscula y sin tildes; valen
+# frases ("hijo de puta"). Se cuenta un mensaje cuando su texto normalizado contiene el término como palabras
+# enteras ("boludo" no cuenta "boludos": cada forma va en su línea). Las líneas con # se ignoran.
+boludo
+boluda
+boludos
+boludas
+boludez
+pelotudo
+pelotuda
+pelotudos
+pelotudas
+pelotudez
+forro
+forra
+forros
+forras
+hijo de puta
+hija de puta
+hijos de puta
+hdp
+la concha
+concha de tu madre
+la puta que te pario
+lcdtm
+ctm
+carajo
+mierda
+puta
+puto
+putos
+putas
+puta madre
+la reputa
+cagar
+cago
+cagon
+cagona
+cagaste
+cagada
+sorete
+soretes
+gil
+giles
+gila
+chupala
+chupame
+chupa pija
+pajero
+pajera
+pajeros
+mogolico
+mogolica
+tarado
+tarada
+idiota
+imbecil
+estupido
+estupida
+choto
+chota
+pija
+poronga
+garcha
+verga
+culo
+orto
+ojete
+conchudo
+conchuda
+trolo
+trola
+cornudo
+garca
+otario
+infeliz
+cogete
+machoide
+incel
+ludopata

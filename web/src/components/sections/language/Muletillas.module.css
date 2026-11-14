@@ -1,0 +1,196 @@
+.root {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.hint {
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.screen {
+  max-width: 40rem;
+  padding-left: clamp(1.1rem, 4vw, 1.6rem);
+}
+
+.thread {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.item {
+  position: relative;
+  min-width: 0;
+}
+
+/* The dots sit in the slot of the bubble that is about to land. */
+.typingBubble {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding-block: 0.55rem;
+}
+
+.typingName {
+  color: var(--ct);
+  font-style: normal;
+}
+
+.arrival {
+  transform-origin: left bottom;
+}
+
+.bubble {
+  padding-right: 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bubble:hover {
+  background: #26353e;
+}
+
+.bubble:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.name {
+  color: var(--ct);
+}
+
+.phrase {
+  display: block;
+  font-size: var(--step-1);
+  font-weight: 700;
+  font-stretch: 112%;
+  line-height: 1.2;
+}
+
+/* WhatsApp's little chevron: points down, flips when the example is open. */
+.caret {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.75rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid var(--dim);
+  border-bottom: 2px solid var(--dim);
+  transform: rotate(45deg);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bubble[aria-expanded="true"] .caret {
+  transform: translateY(0.2rem) rotate(-135deg);
+}
+
+.exampleWrap {
+  overflow: hidden;
+}
+
+/* A quoted real message under the bubble, dimmer, with the person's bar. */
+.example {
+  width: fit-content;
+  max-width: min(100%, 32rem);
+  margin: 0.3rem 0 0.35rem 1rem;
+  padding: 0.4rem 0.7rem 0.35rem;
+  border-left: 3px solid var(--c);
+  border-radius: 0.4rem 0.75rem 0.75rem 0.4rem;
+  background: var(--panel);
+  color: var(--paper);
+  font-size: var(--step--1);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.example blockquote {
+  opacity: 0.85;
+}
+
+.example mark {
+  background: transparent;
+  color: var(--ct);
+  font-weight: 700;
+}
+
+.all {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.allToggle {
+  padding: 0.45rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper);
+  font: inherit;
+  font-size: var(--step--1);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.allToggle:active {
+  transform: scale(0.96);
+}
+
+.allToggle[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.allToggle:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
+  gap: 0.75rem 1rem;
+  width: 100%;
+  padding-left: 0.5rem;
+}
+
+.card {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card:hover {
+  background: #26353e;
+}
+
+.card[aria-pressed="true"] {
+  box-shadow: inset 0 0 0 1px var(--dim);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.cardPhrase {
+  display: block;
+  font-size: var(--step-0);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cardEmpty {
+  display: block;
+  color: var(--dim);
+  font-size: var(--step--1);
+}

@@ -1,0 +1,104 @@
+.root {
+  --name: 4.75rem;
+  --bar: 14px;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .root {
+    --name: 6.5rem;
+    --bar: 18px;
+  }
+}
+
+.rows {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.row,
+.axis {
+  display: grid;
+  grid-template-columns: var(--name) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.name {
+  overflow: hidden;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lane {
+  position: relative;
+  height: var(--bar);
+  border-radius: calc(var(--bar) / 2);
+  background: color-mix(in srgb, var(--bubble), transparent 40%);
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 3px;
+  border-radius: calc(var(--bar) / 2);
+  background: var(--c);
+  overflow: hidden;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 60ms);
+}
+
+.rows[data-seen="true"] .bar {
+  transform: none;
+}
+
+/* A silence longer than the threshold: the bar is cut and hatched in the person's color. */
+.gap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  min-width: 2px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--c) 40%, transparent) 0 3px,
+      transparent 3px 6px
+    ),
+    var(--panel);
+}
+
+.ticks {
+  position: relative;
+  height: 1.25rem;
+  border-top: 1px solid var(--bubble);
+}
+
+.tick {
+  position: absolute;
+  top: 0.25rem;
+  color: var(--dim);
+  font-size: 0.72rem;
+  letter-spacing: 0;
+  transform: translateX(-50%);
+}
+
+.tick::before {
+  content: "";
+  position: absolute;
+  top: -0.3rem;
+  left: 50%;
+  width: 1px;
+  height: 0.25rem;
+  background: var(--dim);
+}
+
+.empty {
+  color: var(--dim);
+}

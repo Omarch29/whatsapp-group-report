@@ -1,0 +1,26 @@
+[
+  {
+    "id": "el-asado",
+    "title": "El asado del año",
+    "terms": "\\basado|parrilla|chori|carb[oó]n|vac[ií]o\\b",
+    "from": "2025-04-23",
+    "to": "2025-04-27",
+    "note": "Un sábado de abril en lo de Tomi: la parrilla, el chimichurri casero y la foto que todavía circula."
+  },
+  {
+    "id": "cumple-caro",
+    "title": "El cumple de Caro",
+    "terms": "cumple|torta|regalo",
+    "from": "2025-12-10",
+    "to": "2025-12-14",
+    "note": "El festejo más largo del grupo: torta, regalo entre todos y baile hasta las 4."
+  },
+  {
+    "id": "la-final",
+    "title": "La final del Mundial",
+    "terms": "mundial|la final|penales|partido",
+    "from": "2026-07-16",
+    "to": "2026-07-20",
+    "note": "La final se vio todos juntos, con las cábalas de siempre y nadie moviéndose de su lugar."
+  }
+]

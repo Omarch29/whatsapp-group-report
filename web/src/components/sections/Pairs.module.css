@@ -1,0 +1,75 @@
+.pairs {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(0.75rem, 3vw, 3.5rem);
+  padding-block: clamp(3rem, 10vh, 6rem);
+  background: var(--ink);
+}
+
+.head {
+  display: grid;
+  gap: 0.75rem;
+  padding-inline: 0.5rem;
+}
+
+.lede {
+  max-width: 34ch;
+  color: var(--dim);
+  font-size: var(--step-0);
+  line-height: 1.35;
+}
+
+.wrap {
+  min-width: 0;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.link {
+  transition:
+    stroke 350ms ease,
+    stroke-opacity 350ms ease;
+}
+
+.node {
+  cursor: grab;
+  outline: none;
+  touch-action: none;
+  transition: opacity 350ms ease;
+}
+
+.node:active {
+  cursor: grabbing;
+}
+
+.dot {
+  stroke: var(--ink);
+  stroke-width: 3px;
+  transition: stroke 200ms ease;
+}
+
+.node:focus-visible .dot {
+  stroke: var(--paper);
+}
+
+.name {
+  fill: var(--paper);
+  font-weight: 800;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .node,
+  .dot {
+    transition: none;
+  }
+}

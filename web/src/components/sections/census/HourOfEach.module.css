@@ -1,0 +1,137 @@
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  gap: 1.25rem 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+.clock {
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+  text-align: center;
+}
+
+.dialWrap {
+  position: relative;
+  width: min(100%, 6.5rem);
+  aspect-ratio: 1;
+}
+
+.face {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.dial {
+  fill: var(--bubble);
+}
+
+.major,
+.minor {
+  stroke: var(--dim);
+  stroke-linecap: round;
+}
+
+.major {
+  stroke-width: 2;
+}
+
+.minor {
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.ring {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.hand {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.handBar {
+  position: absolute;
+  left: calc(50% - 1.5px);
+  bottom: 50%;
+  width: 3px;
+  height: 34%;
+  border-radius: 2px;
+  background: var(--c);
+}
+
+.pivot {
+  position: absolute;
+  left: calc(50% - 4px);
+  top: calc(50% - 4px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.label {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.share {
+  color: var(--dim);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+
+.empty {
+  color: var(--dim);
+}
+
+.records {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .records {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.record {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+
+.recordLabel {
+  color: var(--dim);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.gold {
+  color: var(--gold);
+  font-size: var(--step-4);
+  line-height: 1;
+}
+
+.recordCaption {
+  color: var(--dim);
+  font-size: var(--step--1);
+}

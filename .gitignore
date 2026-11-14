@@ -1,0 +1,28 @@
+chats/*
+!chats/.gitkeep
+# a WhatsApp export dropped anywhere in the repo (iOS, English and Spanish Android names, the .zip it comes in)
+_chat*.txt
+WhatsApp Chat*
+Chat de WhatsApp*
+*.zip
+content/*
+!content/.gitkeep
+!content/example/
+/data/
+out/
+report.config.json
+report.config.demo-*.json
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+web/node_modules/
+web/.next/
+web/out/
+web/.vercel/
+web/.env*.local
+web/data/*
+!web/data/example/
+# pytest's end-to-end runs on the synthetic chat (tests/conftest.py), validated by vitest
+web/data/synth/
+web/tsconfig.tsbuildinfo

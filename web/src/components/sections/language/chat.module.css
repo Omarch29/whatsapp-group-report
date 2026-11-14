@@ -1,0 +1,117 @@
+/* Shared chat pieces for the Lenguaje blocks: the chat screen, incoming bubbles, name tags,
+   the typing dots and WhatsApp-style system notes. */
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: clamp(0.75rem, 3vw, 1.25rem);
+  border-radius: 14px;
+  background: var(--ink);
+}
+
+.bubble {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: min(100%, 34rem);
+  padding: 0.45rem 0.75rem 0.4rem;
+  border: 0;
+  border-radius: 0.875rem;
+  background: var(--bubble);
+  color: var(--paper);
+  font: inherit;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+/* The first bubble of a run gets WhatsApp's notch at the top left. */
+.tail {
+  border-top-left-radius: 0.2rem;
+}
+
+.tail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -0.45rem;
+  width: 0.5rem;
+  height: 0.65rem;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.name {
+  display: block;
+  font-size: var(--step--1);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.1rem 0.9rem;
+  margin-top: 0.15rem;
+  color: var(--dim);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+  font-style: italic;
+}
+
+.dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.dots i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--dim);
+  animation: dot 1s infinite;
+}
+
+.dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+/* "Nada que mostrar todavía." as a centered system note. */
+.system {
+  align-self: center;
+  max-width: 100%;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--panel);
+  color: var(--dim);
+  font-size: var(--step--1);
+  text-align: center;
+}

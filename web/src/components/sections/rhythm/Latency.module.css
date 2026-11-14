@@ -1,0 +1,218 @@
+.root {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 48rem;
+  min-width: 0;
+}
+
+/* The dots start far to the right: clip them so they never widen the page. */
+.rows {
+  list-style: none;
+  display: grid;
+  gap: 0.15rem;
+  overflow-x: clip;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+  height: 1.35rem;
+  transition: opacity 0.3s ease;
+}
+
+.row[data-dim] {
+  opacity: 0.3;
+}
+
+.row[data-active="true"] .name {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.name {
+  overflow: hidden;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Dots sit on a faint baseline; positions are % of the track (log scale). */
+.track {
+  position: relative;
+  height: 100%;
+  margin-inline: 0.5rem;
+  background: linear-gradient(var(--bubble), var(--bubble)) center / 100% 1px no-repeat;
+}
+
+.link {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--c);
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s ease calc(0.7s + var(--i, 0) * 40ms);
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: -0.375rem 0 0 -0.375rem;
+  border-radius: 50%;
+  translate: 0 0;
+  transition:
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 40ms),
+    opacity 0.4s ease calc(var(--i, 0) * 40ms);
+}
+
+.from {
+  z-index: 1;
+  background: var(--c);
+}
+
+.to {
+  border: 2px solid var(--c);
+  background: var(--panel);
+  width: 0.95rem;
+  height: 0.95rem;
+  margin: -0.475rem 0 0 -0.475rem;
+}
+
+/* Start state: dots parked at the right edge, invisible. 100cqi would be exact; a big offset reads the same. */
+.root:not([data-seen="true"]) .dot {
+  opacity: 0;
+  translate: 60vw 0;
+}
+
+.root[data-seen="true"] .link {
+  transform: none;
+}
+
+.spoken {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.axis {
+  position: relative;
+  height: 1.2rem;
+  margin-left: calc(5.5rem + 0.6rem + 0.5rem);
+  margin-right: 0.5rem;
+  border-top: 1px solid var(--bubble);
+}
+
+.tick {
+  position: absolute;
+  top: 0.2rem;
+  color: var(--dim);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  translate: -50% 0;
+}
+
+.tick::before {
+  content: "";
+  position: absolute;
+  top: -0.45rem;
+  left: 50%;
+  width: 1px;
+  height: 0.25rem;
+  background: var(--dim);
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  --c: var(--paper);
+}
+
+.key {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+}
+
+.empty {
+  color: var(--dim);
+}
+
+.note {
+  margin-top: 0.75rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+/* Fastest pair */
+.pair {
+  list-style: none;
+  max-width: 34rem;
+}
+
+.msg {
+  display: flex;
+  transition:
+    opacity 0.35s ease,
+    translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.msgB {
+  justify-content: flex-end;
+}
+
+.mine {
+  background: var(--mine);
+  border-top-right-radius: 0.2rem;
+}
+
+.text {
+  display: block;
+}
+
+.gap {
+  display: flex;
+  justify-content: center;
+  transition: opacity 0.3s ease 0.35s;
+}
+
+.gapTag {
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--gold);
+  font-size: var(--step--1);
+}
+
+.pair:not([data-seen="true"]) .msg {
+  opacity: 0;
+  translate: 0 0.75rem;
+}
+
+.pair:not([data-seen="true"]) .gap {
+  opacity: 0;
+}
+
+.pair[data-seen="true"] .msgB {
+  transition-delay: 0.7s;
+}

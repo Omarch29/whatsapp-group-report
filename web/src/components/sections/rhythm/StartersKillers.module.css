@@ -1,0 +1,119 @@
+.root {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 48rem;
+  min-width: 0;
+}
+
+.legend {
+  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5rem minmax(0, 1fr);
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legendItem[data-series="kills"] {
+  justify-self: end;
+}
+
+.legendItem[data-series="starts"] {
+  grid-column: 3;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+}
+
+.rows {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+/* Killers | name | starters: the name sits in the middle, both bars grow away from it. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5rem minmax(0, 1fr);
+  grid-template-areas: "kills name starts";
+  align-items: center;
+}
+
+.name {
+  grid-area: name;
+  overflow: hidden;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.side {
+  display: grid;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.side[data-side="kills"] {
+  grid-area: kills;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+}
+
+.side[data-side="starts"] {
+  grid-area: starts;
+  grid-template-columns: minmax(0, 1fr) 2.6rem;
+}
+
+.track {
+  display: flex;
+  height: 0.85rem;
+}
+
+.side[data-side="kills"] .track {
+  justify-content: flex-end;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  background: var(--c);
+  transform: scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 50ms);
+}
+
+.side[data-side="kills"] .bar {
+  border-radius: 999px 0 0 999px;
+  transform-origin: right center;
+}
+
+.side[data-side="starts"] .bar {
+  border-radius: 0 999px 999px 0;
+  transform-origin: left center;
+}
+
+.rows[data-seen="true"] .bar {
+  transform: none;
+}
+
+.value {
+  color: var(--paper);
+  font-size: var(--step--1);
+}
+
+.side[data-side="kills"] .value {
+  text-align: right;
+}
+
+.empty {
+  color: var(--dim);
+}

@@ -1,0 +1,334 @@
+/* Report navigation: desktop sidebar, mobile top bar + drawer, chapter list and pager. */
+
+/* ---------- Desktop sidebar (>= 1024 px) ---------- */
+
+.sidebar {
+  display: none;
+}
+
+/*
+ * A flex column the height of the viewport: logo, the chapter list, and "Capítulo n de N" pinned
+ * to the bottom. Sized so 18 chapters plus a chapter's 6 blocks fit in 900 px (rows of ~30 px and
+ * ~26 px); when they still don't (a profile's 14 anchors, a short window) only the list scrolls,
+ * and its bottom edge fades out so the cut is visible.
+ */
+@media (min-width: 1024px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 240px;
+    height: 100svh;
+    overflow: hidden;
+    padding: 1.25rem 1rem 1rem;
+    background: var(--panel);
+  }
+
+  .sidebar .nav {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Room for the focus ring, and for the last link to scroll out of the fade. */
+    margin-inline: -4px;
+    padding: 4px 4px 1.5rem;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 1.5rem), transparent);
+  }
+
+  .sidebar .logo {
+    flex: none;
+  }
+
+  /* Tighter rows than the drawer's (a pointer, not a thumb): ~30 px per chapter, ~26 px per block. */
+  .sidebar .chapter {
+    padding-block: 0.2rem;
+    line-height: 1.25;
+  }
+
+  .sidebar .blocks {
+    margin-block: 0.15rem 0.35rem;
+  }
+
+  .sidebar .block {
+    padding-block: 0.2rem;
+  }
+}
+
+.logo {
+  color: var(--paper);
+  font-size: var(--step-1);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.counter {
+  flex: none;
+  margin-top: auto;
+  color: var(--dim);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Chapter list (sidebar and drawer) ---------- */
+
+.chapters,
+.blocks {
+  list-style: none;
+}
+
+.chapters {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.chapter,
+.block {
+  display: block;
+  border-radius: 8px;
+  text-decoration: none;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.chapter {
+  padding: 0.4rem 0.6rem;
+  color: var(--dim);
+  font-weight: 600;
+}
+
+.chapter[aria-current="page"] {
+  color: var(--ribbon);
+  background: var(--bubble);
+}
+
+.blocks {
+  display: grid;
+  gap: 0.05rem;
+  margin: 0.25rem 0 0.5rem 0.6rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid var(--bubble);
+}
+
+.block {
+  padding: 0.3rem 0.5rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+  line-height: 1.3;
+}
+
+.block[aria-current="location"] {
+  color: var(--ribbon);
+}
+
+/* The current chapter and block keep their pink on hover. */
+@media (hover: hover) {
+  .chapter:not([aria-current]):hover,
+  .block:not([aria-current]):hover {
+    color: var(--paper);
+  }
+}
+
+.chapter:focus-visible,
+.block:focus-visible,
+.logo:focus-visible,
+.menu:focus-visible,
+.close:focus-visible,
+.pagerLink:focus-visible {
+  outline: 2px solid var(--ribbon);
+  outline-offset: 2px;
+}
+
+/* ---------- Mobile top bar (< 1024 px) ---------- */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 3.5rem;
+  padding: 0 0.75rem 0 0.25rem;
+  background: var(--panel);
+}
+
+@media (min-width: 1024px) {
+  .bar {
+    display: none;
+  }
+}
+
+.menu {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.barTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dots {
+  display: flex;
+  flex: none;
+  gap: 3px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--bubble);
+}
+
+.dot[data-on] {
+  background: var(--ribbon);
+}
+
+/* ---------- Drawer ---------- */
+
+.drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: min(20rem, 85vw);
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--panel);
+  color: var(--paper);
+}
+
+.drawer[open] {
+  animation: drawer-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.drawer::backdrop {
+  background: rgb(11 20 26 / 0.72);
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+/* Covers the whole dialog box: a click on the dialog element itself is the backdrop. */
+.panel {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.close {
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--bubble);
+  border-radius: 999px;
+  background: none;
+  color: var(--dim);
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+/* ---------- Pager ---------- */
+
+.pager {
+  display: grid;
+  /* minmax(0, …): a long chapter name ("Multimedia", "Encuestas") must not widen the page. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 3rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.pagerLink {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--bubble);
+  border-radius: 16px;
+  color: var(--paper);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.pagerNext {
+  grid-column: 2;
+  text-align: right;
+}
+
+@media (hover: hover) {
+  .pagerLink:hover {
+    border-color: var(--ribbon);
+  }
+}
+
+.pagerDir {
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.pagerName {
+  font-size: var(--step-1);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .pagerLink {
+    padding: 0.9rem 1rem;
+  }
+
+  .pagerName {
+    font-size: var(--step-0);
+  }
+}
+
+/* ---------- "Este perfil": the anchors of a profile, under the chapters ---------- */
+
+.profile {
+  margin-bottom: 1rem;
+}
+
+.profileTitle {
+  padding: 0.4rem 0.6rem 0;
+  color: var(--ribbon);
+  font-weight: 600;
+}

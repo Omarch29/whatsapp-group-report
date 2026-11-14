@@ -1,0 +1,99 @@
+.root {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.empty {
+  color: var(--dim);
+}
+
+/* Won awards: gold cards that rise in one after another. */
+.won {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  padding: 0.9rem 1rem 1rem;
+  border-radius: 14px;
+  border-top: 3px solid var(--gold);
+  background: var(--bubble);
+  container-type: inline-size;
+}
+
+.title {
+  font-size: var(--step-0);
+  font-stretch: 125%;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.4rem;
+  color: var(--gold);
+  font-size: min(var(--step-3), 16cqi);
+  font-stretch: 125%;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.unit {
+  color: var(--dim);
+  font-size: var(--step--1);
+  font-stretch: 100%;
+  font-weight: 400;
+}
+
+.phrase {
+  justify-self: start;
+  font-size: var(--step--1);
+}
+
+/* Finalist spots: one quiet line each. */
+.finalist {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.spot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.6rem;
+}
+
+.spotValue {
+  color: var(--paper);
+}
+
+.spotText {
+  font-style: italic;
+}
+
+/* Entrance (final state under reduced motion: useOnce flips at once and globals.css drops transitions). */
+.card,
+.spot {
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  transition:
+    opacity 0.45s ease calc(min(var(--i, 0), 12) * 90ms),
+    transform 0.6s cubic-bezier(0.22, 1.4, 0.36, 1) calc(min(var(--i, 0), 12) * 90ms);
+}
+
+.root[data-seen="true"] .card,
+.root[data-seen="true"] .spot {
+  opacity: 1;
+  transform: none;
+}

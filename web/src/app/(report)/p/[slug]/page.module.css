@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: clamp(2rem, 8vh, 4rem) clamp(1.25rem, 5vw, 3.5rem);
+}
+
+/* The chapter blocks with the person fixed, after the Wrapped sections: the chapter column's rhythm. */
+.blocks {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+  padding-block: clamp(2rem, 8vh, 4.5rem) 0;
+  max-width: 72rem;
+}

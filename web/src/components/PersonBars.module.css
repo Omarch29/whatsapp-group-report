@@ -1,0 +1,50 @@
+.bars {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 44rem;
+  min-width: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.name {
+  overflow: hidden;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track {
+  display: block;
+  height: 0.85rem;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  border-radius: 0 999px 999px 0;
+  background: var(--c);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 60ms),
+    width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bars[data-seen="true"] .bar {
+  transform: none;
+}
+
+.value {
+  color: var(--paper);
+  font-size: var(--step--1);
+  text-align: right;
+}

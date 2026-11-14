@@ -1,0 +1,11 @@
+{
+  "title": "Los del Parque",
+  "lang": "es",
+  "mode": "full",
+  "chat": "chats/synth-es-ios.txt",
+  "background": [],
+  "me": "Ana",
+  "departer": "Bruno",
+  "gate": true,
+  "verifiedOn": "2026-11-13"
+}

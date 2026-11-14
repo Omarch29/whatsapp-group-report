@@ -1,0 +1,105 @@
+.root {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.85rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 3px;
+}
+
+.rows {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  max-width: 44rem;
+}
+
+/* Name and jaja length on one line, the bar under them. */
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  row-gap: 0.25rem;
+}
+
+.name {
+  overflow: hidden;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.avg {
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.bar {
+  grid-column: 1 / -1;
+  display: flex;
+  height: 0.9rem;
+  border-radius: 999px;
+  background: var(--bubble);
+  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.22, 1, 0.36, 1) calc(min(var(--i, 0), 12) * 70ms);
+}
+
+.row[data-seen="true"] .bar {
+  clip-path: inset(0 0 0 0);
+}
+
+/* No minimum width: with flex none it would push the row past 100 % and clip the last class.
+   A sliver too thin to see is still listed in the screen-reader counts and the tooltip of its row. */
+.seg {
+  flex: none;
+  height: 100%;
+}
+
+.seg + .seg {
+  border-left: 1px solid var(--panel);
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.empty {
+  color: var(--dim);
+}
+
+.record {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.quote {
+  margin-left: 0.5rem;
+  font-weight: 700;
+  word-break: break-all;
+}

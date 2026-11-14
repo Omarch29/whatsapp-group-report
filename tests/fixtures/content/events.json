@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cena-dia-uno",
+    "title": "La cena del día uno",
+    "terms": "\\bcena\\b",
+    "from": "2023-09-01",
+    "to": "2023-09-01",
+    "note": "El primer día del grupo ya tiene cena y postre."
+  },
+  {
+    "id": "la-encuesta",
+    "title": "La encuesta del sábado",
+    "terms": "encuesta|voto",
+    "from": "2023-09-12",
+    "to": "2023-09-12",
+    "note": "Caro propone una encuesta y el grupo vota asado."
+  }
+]

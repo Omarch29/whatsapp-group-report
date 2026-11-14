@@ -1,0 +1,7 @@
+# LF everywhere: the synthetic fixtures and the published example are byte-pinned by tests.
+* text=auto eol=lf
+tests/fixtures/** text eol=lf
+content/example/** text eol=lf
+web/data/example/** text eol=lf
+# Kept byte for byte: a hand-made iOS export with the CRLF line ends real exports have.
+tests/fixtures/mini_chat.txt -text

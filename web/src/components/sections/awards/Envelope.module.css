@@ -1,0 +1,214 @@
+/* A sealed envelope: the title row on top, then the flap (a triangle hinged on its top edge)
+   over the front pocket. Opening swings the flap back in 3D and drops the front away. */
+.card {
+  --head: 3.4rem;
+  position: relative;
+  display: grid;
+  grid-template-rows: var(--head) auto;
+  min-height: 19rem;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--ink);
+  container-type: inline-size;
+}
+
+.toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  grid-template-rows: var(--head) 1fr;
+  align-items: start;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: var(--paper);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card[data-open] .toggle {
+  position: relative;
+  inset: auto;
+  grid-row: 1;
+  grid-template-rows: var(--head);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+.title {
+  align-self: center;
+  padding-inline: 1rem;
+  font-size: var(--step-0);
+  font-stretch: 125%;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* The wax seal at the flap's tip (the flap is half the envelope's height). */
+.seal {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  align-self: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 2rem;
+  font-stretch: 125%;
+  font-weight: 900;
+  transition:
+    opacity 0.25s ease,
+    scale 0.3s ease;
+}
+
+.toggle:hover .seal {
+  scale: 1.08;
+}
+
+.card[data-open] .seal {
+  display: none;
+}
+
+.envelope {
+  position: absolute;
+  inset: var(--head) 0 0;
+  z-index: 2;
+  overflow: hidden;
+  perspective: 900px;
+  pointer-events: none;
+}
+
+.front {
+  position: absolute;
+  inset: 0;
+  background: var(--bubble);
+  transition: translate 0.55s cubic-bezier(0.55, 0, 0.75, 0.2) 0.3s;
+}
+
+.flap {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 100%;
+  background: var(--mine);
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+  transform: rotateX(0deg);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.card[data-open] .flap {
+  transform: rotateX(-180deg);
+}
+
+.card[data-open] .front {
+  translate: 0 105%;
+}
+
+.slot {
+  grid-row: 2;
+  min-width: 0;
+}
+
+.letter {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0 1rem 1.1rem;
+}
+
+.criterion {
+  color: var(--dim);
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+.winner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.5rem;
+  font-size: var(--step-1);
+  font-stretch: 125%;
+  line-height: 1.1;
+}
+
+.nick {
+  color: var(--dim);
+  font-size: var(--step--1);
+  font-stretch: 100%;
+}
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.45rem;
+  color: var(--gold);
+  /* "123.456" must fit the card: cap the size by the card's width. */
+  font-size: min(var(--step-4), 14cqi);
+  line-height: 1;
+}
+
+.unit {
+  color: var(--dim);
+  font-size: var(--step-0);
+}
+
+.phrase {
+  font-size: var(--step-0);
+}
+
+.runners {
+  display: grid;
+  gap: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--bubble);
+}
+
+.runnersTitle {
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.runnerList {
+  list-style: none;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.runner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.1rem 0.5rem;
+  font-size: var(--step--1);
+}
+
+.runnerName {
+  font-weight: 700;
+}
+
+.runnerValue {
+  color: var(--paper);
+  letter-spacing: -0.02em;
+}
+
+.runnerText {
+  color: var(--dim);
+}
+
+.nobody {
+  color: var(--dim);
+  font-size: var(--step-2);
+  font-stretch: 125%;
+  font-weight: 800;
+}

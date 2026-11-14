@@ -1,0 +1,28 @@
+{
+  "me": "Ana",
+  "group": [
+    "Los del Parque 🌳"
+  ],
+  "people": {
+    "Ana Rivas": "Ana",
+    "Tomi \"Tomate\" Suárez🍅": "Tomi",
+    "Lucas \"Rulo\" Benítez 🌚": "Lucas",
+    "Bruno \"Brujo\" Castro": "Bruno",
+    "Caro \"Carola\" Méndez👝": "Caro",
+    "Dani \"Dandy\" Ferreyra": "Dani",
+    "Flor \"Flo\" Paredes": "Flor",
+    "Nico \"Nicolino\" Sosa": "Nico",
+    "Juli \"Jules\" Ortega": "Juli",
+    "Tú": "Ana"
+  },
+  "aliases": [
+    "tomate",
+    "rulo",
+    "brujo",
+    "carola",
+    "dandy",
+    "flo",
+    "nicolino",
+    "jules"
+  ]
+}

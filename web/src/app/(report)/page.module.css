@@ -1,0 +1,22 @@
+/* "Empezar": the one primary pill, into the first chapter. */
+.start {
+  justify-self: start;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: var(--ribbon);
+  color: var(--ink);
+  font-size: var(--step-1);
+  font-weight: 700;
+  font-stretch: 125%;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.start:active {
+  transform: scale(0.97);
+}
+
+.start:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+}

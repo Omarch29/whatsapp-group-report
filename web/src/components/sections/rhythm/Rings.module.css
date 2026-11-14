@@ -1,0 +1,76 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  min-width: 0;
+}
+
+.ring {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  width: min(100%, 17rem);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.track,
+.seg {
+  fill: none;
+  stroke-width: 20;
+}
+
+.track {
+  stroke: var(--bubble);
+}
+
+.seg {
+  stroke: var(--mint);
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 70ms);
+}
+
+.seg[data-peak="true"] {
+  stroke: var(--gold);
+}
+
+.label {
+  fill: var(--dim);
+  font-size: 11px;
+}
+
+.label[data-peak="true"] {
+  fill: var(--gold);
+  font-weight: 700;
+}
+
+.centerName {
+  fill: var(--gold);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.centerValue {
+  fill: var(--paper);
+  font-size: 18px;
+  font-weight: 900;
+  font-stretch: 125%;
+}
+
+.caption {
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.spoken {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

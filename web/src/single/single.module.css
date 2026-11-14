@@ -1,0 +1,123 @@
+/* Single-page mode: the long page and its floating index (the anchor list itself is Sidebar.module.css's). */
+
+/* ---------- Shell ---------- */
+
+.shell {
+  min-height: 100svh;
+}
+
+.main {
+  min-width: 0;
+  padding-bottom: 4rem;
+}
+
+/* The index sits beside the page from the width where the full report shows its sidebar. */
+@media (min-width: 1024px) {
+  .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 13rem;
+    align-items: start;
+  }
+}
+
+/* ---------- Desktop index (>= 1024 px) ---------- */
+
+.index {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .index {
+    position: sticky;
+    top: 0;
+    display: grid;
+    align-content: start;
+    gap: 0.5rem;
+    max-height: 100svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1.5rem 1rem 1.5rem 0;
+  }
+}
+
+.indexTitle {
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Mobile button and sheet (< 1024 px) ---------- */
+
+.open {
+  position: fixed;
+  right: 1rem;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid var(--bubble);
+  border-radius: 999px;
+  background: var(--panel);
+  box-shadow: 0 6px 20px rgb(11 20 26 / 0.5);
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.open:focus-visible {
+  outline: 2px solid var(--ribbon);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .open {
+    display: none;
+  }
+}
+
+.sheet {
+  position: fixed;
+  inset: auto 0 0;
+  width: 100%;
+  max-width: none;
+  max-height: min(70svh, 32rem);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 16px 16px 0 0;
+  background: var(--panel);
+  color: var(--paper);
+}
+
+/* The global prefers-reduced-motion rule (globals.css) cuts this to an instant open. */
+.sheet[open] {
+  animation: sheet-in 0.24s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.sheet::backdrop {
+  background: rgb(11 20 26 / 0.72);
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* Covers the whole dialog box: a click on the dialog element itself is the backdrop. */
+.panel {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  max-height: inherit;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem 1rem max(1rem, env(safe-area-inset-bottom));
+}

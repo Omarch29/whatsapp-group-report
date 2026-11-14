@@ -1,0 +1,128 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100svh;
+  display: grid;
+  background: var(--ink);
+}
+
+/* The one soft rose glow, top right. */
+.glow {
+  position: absolute;
+  top: -8rem;
+  right: -8rem;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background: var(--ribbon);
+  opacity: 0.18;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+  padding-block: clamp(2rem, 8vh, 4rem) clamp(2rem, 7vh, 4rem);
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 26rem;
+}
+
+.bubble {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.875rem 0.875rem 0.875rem 0.25rem;
+  background: var(--bubble);
+  font-size: var(--step-1);
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  transform-origin: left bottom;
+}
+
+.mine {
+  align-self: flex-end;
+  background: var(--mine);
+  border-radius: 0.875rem 0.875rem 0.25rem 0.875rem;
+  transform-origin: right bottom;
+}
+
+.chat[data-static] .bubble {
+  opacity: 1;
+  transform: none;
+}
+
+.nick {
+  display: block;
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 1.25rem;
+  vertical-align: middle;
+}
+
+.typing i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dim);
+  animation: dot 1s infinite;
+}
+
+.typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+.bottom {
+  align-self: end;
+  display: grid;
+  gap: 1rem;
+}
+
+.total {
+  font-size: clamp(64px, 15vw, 170px);
+  line-height: 0.9;
+  white-space: nowrap;
+  color: var(--paper);
+}
+
+.lede {
+  max-width: 30ch;
+  color: var(--dim);
+  font-size: var(--step-1);
+  line-height: 1.3;
+}

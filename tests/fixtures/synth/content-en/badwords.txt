@@ -1,0 +1,46 @@
+# Swear words for the Language chapter: the language's generic ones plus the ones the fictional chat uses.
+# One per line, lowercase, no accents. Lines with # are ignored.
+arse
+arsehole
+ass
+asshole
+bastard
+bitch
+bloody hell
+bollocks
+bugger
+bullshit
+crap
+cunt
+dammit
+damn
+dick
+dickhead
+dipshit
+douche
+douchebag
+dumbass
+fuck
+fucked
+fucker
+fucking
+goddamn
+idiot
+jackass
+jerk
+moron
+motherfucker
+piss
+pissed
+prick
+screw you
+shit
+shithead
+shitty
+sod off
+son of a bitch
+stfu
+stupid
+twat
+wanker
+wtf

@@ -1,0 +1,98 @@
+.events {
+  display: grid;
+  gap: 1.5rem;
+  /* Lets the rail scroll inside the section instead of widening the page. */
+  min-width: 0;
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+  padding-block: clamp(3rem, 10vh, 6rem);
+  background: var(--panel);
+}
+
+.lede {
+  max-width: 30ch;
+  color: var(--dim);
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+.empty {
+  color: var(--dim);
+}
+
+.rail {
+  display: flex;
+  gap: 0.875rem;
+  min-width: 0;
+  padding: 0.75rem 0.25rem 1.25rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.slot {
+  flex: 0 0 250px;
+  height: 230px;
+  scroll-snap-align: start;
+}
+
+.slot[data-hidden] {
+  opacity: 0;
+}
+
+.more {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+}
+
+.button {
+  padding: 0.6rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--bubble);
+  color: var(--paper);
+  font: inherit;
+  font-size: var(--step--1);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--mine);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.list {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  list-style: none;
+}
+
+.list[hidden] {
+  display: none;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.75rem;
+  background: var(--bubble);
+}
+
+.rowTitle {
+  font-weight: 600;
+}
+
+.rowMeta {
+  color: var(--dim);
+  font-size: var(--step--1);
+}

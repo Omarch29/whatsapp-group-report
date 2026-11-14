@@ -1,0 +1,11 @@
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr));
+  gap: 1rem;
+  min-width: 0;
+}
+
+.empty {
+  color: var(--dim);
+}

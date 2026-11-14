@@ -1,0 +1,138 @@
+.root {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.domains {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  max-width: 44rem;
+  min-width: 0;
+}
+
+.domain {
+  display: grid;
+  grid-template-columns: 1.9rem minmax(6rem, 11rem) minmax(0, 1fr) 3.5rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.initial {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  background: var(--bubble);
+  color: var(--paper);
+  font-size: var(--step--1);
+  font-weight: 800;
+  font-stretch: 125%;
+  transform: scale(0);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i, 0) * 60ms);
+}
+
+.domain[data-top] .initial {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.label {
+  overflow: hidden;
+  font-size: var(--step--1);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track {
+  display: block;
+  height: 0.7rem;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  border-radius: 0 999px 999px 0;
+  background: var(--dim);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 60ms + 120ms);
+}
+
+.domain[data-top] .bar {
+  background: var(--gold);
+}
+
+.domains[data-seen="true"] .initial,
+.domains[data-seen="true"] .bar {
+  transform: none;
+}
+
+.value {
+  color: var(--paper);
+  font-size: var(--step--1);
+  text-align: right;
+}
+
+.favorites {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.favoritesTitle {
+  color: var(--dim);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: var(--bubble);
+  color: var(--paper);
+  font-size: var(--step--1);
+}
+
+.dot {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+
+.chipN {
+  color: var(--dim);
+}
+
+.empty {
+  color: var(--dim);
+}
+
+@media (max-width: 480px) {
+  .domain {
+    grid-template-columns: 1.9rem minmax(0, 1fr) 3rem;
+  }
+
+  .track {
+    grid-row: 2;
+    grid-column: 2 / -1;
+  }
+
+  .value {
+    grid-row: 1;
+    grid-column: 3;
+  }
+}

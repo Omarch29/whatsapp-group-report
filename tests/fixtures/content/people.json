@@ -1,0 +1,13 @@
+{
+  "me": "Ana",
+  "group": ["Los del Parque 🌳"],
+  "people": {
+    "Ana Rivas": "Ana",
+    "Tú": "Ana",
+    "Tomi \"Tomate\" Suárez🍅": "Tomi",
+    "Lucas \"Rulo\" Benítez 🌚": "Lucas",
+    "Bruno \"Brujo\" Castro": "Bruno",
+    "Caro \"Carola\" Méndez👝": "Caro"
+  },
+  "aliases": ["brujo", "tomate", "rulo", "carola", "capitana"]
+}

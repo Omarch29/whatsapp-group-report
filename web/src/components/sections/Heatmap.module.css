@@ -1,0 +1,153 @@
+.heatmap {
+  position: relative;
+  overflow-x: clip;
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(0.75rem, 3vw, 3.5rem);
+  padding-block: clamp(3rem, 10vh, 6rem);
+  background: var(--ink);
+}
+
+.head {
+  display: grid;
+  gap: 0.75rem;
+  padding-inline: 0.5rem;
+}
+
+.lede {
+  max-width: 34ch;
+  color: var(--dim);
+  font-size: var(--step-0);
+  line-height: 1.35;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-inline: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper);
+  font: inherit;
+  font-size: var(--step--1);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 3px;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+}
+
+.grid {
+  --label: 24px;
+  --gap: 3px;
+  display: grid;
+  gap: var(--gap);
+  max-width: 60rem;
+  touch-action: pan-y;
+}
+
+.axis,
+.row {
+  display: grid;
+  grid-template-columns: var(--label) repeat(24, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+.hour,
+.day {
+  color: var(--dim);
+  font-size: 10px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.hour {
+  align-self: end;
+}
+
+.day {
+  align-self: center;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  transition: background-color 300ms ease;
+}
+
+.cell[data-peak="true"] {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 1.5px var(--paper);
+}
+
+.peak {
+  padding-inline: 0.5rem;
+  color: var(--dim);
+  font-size: var(--step--1);
+}
+
+.tip {
+  position: absolute;
+  z-index: 2;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 12px));
+}
+
+@media (max-width: 480px) {
+  .minor {
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 640px) {
+  .grid {
+    --label: 32px;
+  }
+
+  .hour,
+  .day {
+    font-size: 12px;
+  }
+
+  .cell {
+    border-radius: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell {
+    transition: none;
+  }
+}

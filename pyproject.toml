@@ -1,0 +1,21 @@
+[project]
+name = "whatsapp-group-report"
+version = "0.1.0"
+description = "Turn a WhatsApp group export into a static, shareable report"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=3",
+    "pyarrow>=26",
+    "numpy",
+    "wordfreq>=3.1",
+    "tabulate",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv]
+package = false

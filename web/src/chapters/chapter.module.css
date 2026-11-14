@@ -1,0 +1,12 @@
+/* Shared by every chapter page: the <main> column and the chapter <h2>. */
+.chapter {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  padding: clamp(1.25rem, 5vw, 3.5rem);
+  padding-block: clamp(2rem, 8vh, 4.5rem);
+  max-width: 72rem;
+}
+
+.heading {
+  font-size: var(--step-4);
+}

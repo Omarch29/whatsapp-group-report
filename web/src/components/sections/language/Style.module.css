@@ -1,0 +1,122 @@
+.cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr));
+  gap: 0.75rem;
+  perspective: 900px;
+}
+
+@media (min-width: 640px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  }
+}
+
+/* A trading card: the person's color on top. */
+.card {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0.75rem 0.8rem 0.85rem;
+  border-top: 3px solid var(--c);
+  border-radius: 12px;
+  background: var(--bubble);
+  transform-origin: center top;
+}
+
+.name {
+  font-size: var(--step-1);
+  line-height: 1.1;
+}
+
+.trait {
+  justify-self: start;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(242, 201, 76, 0.14);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.metrics {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.metric {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 0.5rem;
+  row-gap: 0.2rem;
+}
+
+.label {
+  color: var(--dim);
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.value {
+  color: var(--paper);
+  font-size: var(--step--1);
+}
+
+.metric[data-top="true"] .value {
+  color: var(--gold);
+}
+
+.track {
+  grid-column: 1 / -1;
+  display: block;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--c);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) calc(0.25s + min(var(--i, 0), 10) * 60ms);
+}
+
+.metric[data-top="true"] .bar {
+  background: var(--gold);
+}
+
+.card[data-seen="true"] .bar {
+  transform: none;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.empty {
+  color: var(--dim);
+}
+
+.record {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.quote {
+  margin-left: 0.5rem;
+  font-size: var(--step--1);
+  line-height: 1.45;
+}

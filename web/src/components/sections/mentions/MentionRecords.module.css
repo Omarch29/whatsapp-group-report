@@ -1,0 +1,25 @@
+.wrap {
+  container-type: inline-size;
+  min-width: 0;
+}
+
+.records {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+/* Side by side where two big numbers fit; RecordPair's value carries the global .num class. */
+@container (min-width: 32rem) {
+  .records {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .records :global(.num) {
+    font-size: clamp(2.5rem, 10cqi, 5rem);
+  }
+}
+
+.empty {
+  color: var(--dim);
+}

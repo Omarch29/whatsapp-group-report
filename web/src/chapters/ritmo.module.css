@@ -1,0 +1,8 @@
+/* .chapter and .heading come from ../chapter.module.css. */
+
+/* The fastest reply: the two messages, then the number. */
+.recordStack {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
